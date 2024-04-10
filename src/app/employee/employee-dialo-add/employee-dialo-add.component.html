@@ -1,0 +1,83 @@
+<h1 mat-dialog-title>הוספת עובד</h1>
+<div class="container">
+  <form [formGroup]="employeeForm">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field>
+          <mat-label>שם פרטי</mat-label>
+          <input type="text" formControlName="firstName" matInput
+            [ngClass]="{'error-class': employeeForm.get('firstName')?.hasError('required')}">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field>
+          <mat-label>שם משפחה</mat-label>
+          <input type="text" formControlName="lastName" matInput
+            [ngClass]="{'error-class': employeeForm.get('lastName')?.hasError('required')}">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field>
+          <mat-label>מס' זהות</mat-label>
+          <input type="text" formControlName="tz" matInput
+            [ngClass]="{'error-class': employeeForm.get('id')?.hasError('required')}">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field>
+          <mat-label>תאריך תחילת עבודה</mat-label>
+          <input matInput [min]="minStartDate" [max]="maxStartDate" [matDatepicker]="startDatePicker"
+            formControlName="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+          <mat-error *ngIf="employeeForm.get('startDate')?.hasError('required')">
+            חובה לבחור תאריך תחילת עבודה
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field>
+          <mat-label>תאריך לידה</mat-label>
+          <input matInput [min]="minBirthDate" [max]="maxBirthDate" [matDatepicker]="birthDatepicker"
+            formControlName="birthDate">
+          <mat-datepicker-toggle matSuffix [for]="birthDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #birthDatepicker></mat-datepicker>
+          <mat-error *ngIf="employeeForm.get('birthDate')?.hasError('required')">
+            חובה לבחור תאריך לידה
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field>
+          <mat-label>מין</mat-label>
+          <mat-select formControlName="gender" required>
+            <mat-option *ngFor="let gender of genders" [value]="gender">
+              {{ gender }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      </div>
+    </div>
+    <button mat-raised-button color="primary" (click)="addRole()" [disabled]="employeeForm.invalid">
+      הוספת תפקיד</button>
+    <p id="EmployeeRolesToShow" class="shadow" *ngFor="let EmployeeRoleToShow of EmployeeRolesToShow">{{
+      EmployeeRoleToShow }}</p>
+    <div class="row">
+      <div class="col-md-12">
+        <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!saved">
+          שמירה
+        </button>
+        <button mat-button color="accent" (click)="onCancel()">
+          ביטול
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

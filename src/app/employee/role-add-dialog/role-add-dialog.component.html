@@ -1,0 +1,44 @@
+<h1>הוספת תפקיד</h1>
+<div class="container">
+    <form [formGroup]="roleAddForm">
+        <div class="col-md-6">
+            <mat-form-field>
+                <mat-label>תפקיד</mat-label>
+                <mat-select formControlName="roleId">
+                    <mat-option *ngFor="let role of roles" [value]="role.id">
+                        {{ role.nameRole }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-radio-group formControlName="isManagerial" aria-label="האם ניהולי?">
+                <mat-radio-button [value]="true">ניהולי</mat-radio-button>
+                <mat-radio-button [value]="false">ללא ניהול</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field>
+                <mat-label>תאריך כניסה לתפקיד</mat-label>
+                <input matInput [min]="minRoleStartDate" [matDatepicker]="roleStartDatepicker"
+                    formControlName="roleStartDate">
+                <mat-datepicker-toggle matSuffix [for]="roleStartDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #roleStartDatepicker></mat-datepicker>
+                <mat-error *ngIf="roleAddForm.get('roleStartDate')?.hasError('required')">
+                    חובה לבחור תאריך כניסה לתפקיד
+                    <p>{{ twiceError }}</p>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="roleAddForm.invalid">
+                    שמירה
+                </button>
+                <button mat-button color="accent" (click)="onCancel()">
+                    ביטול
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

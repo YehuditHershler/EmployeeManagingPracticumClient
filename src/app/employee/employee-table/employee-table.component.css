@@ -1,0 +1,40 @@
+table> :not(caption)>*>* {
+  color: var(--bs-table-color-state, var(--bs-table-color-type, #c2185b));
+  --bs-table-accent-bg: #111111;
+  background-color: #c2185b;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+.primary {
+  color: #ffffff;
+  font-style: inherit;
+}
+
+.table-top {
+  margin: 5px;
+  size: 100%;
+  padding: 60%px;
+  display: flex;
+  flex-direction: row;
+}
+
+#exportToExcel {
+  margin-left: 90%px;
+  margin-top: 3%px;
+  color: green;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: row;
+}
+
+#search {
+  direction: ltr;
+  size: 50%;
+}

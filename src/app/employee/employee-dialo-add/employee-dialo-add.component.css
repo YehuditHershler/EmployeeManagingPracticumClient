@@ -1,0 +1,9 @@
+.error-class {
+  border-color: red;
+}
+#EmployeeRolesToShow {
+  color: white;
+  background-color: rgb(34, 33, 33);
+  margin: 3px;
+  padding: 3px;
+}

@@ -1,0 +1,26 @@
+.error-class {
+  border-color: red;
+}
+
+#roles {
+  border: 1px solid rgb(244, 37, 106);
+}
+
+.roles {
+  color: aliceblue;
+  background-color: rgb(22, 22, 22);
+  margin: 1%;
+  padding: 1%;
+}
+
+.small-mat {
+  width: 75px;
+}
+
+h2 {
+  color: rgb(244, 37, 106);
+}
+
+.rtl {
+  align-items: flex-end;
+}
